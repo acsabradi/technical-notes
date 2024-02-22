@@ -16,197 +16,8 @@
               "state": {},
               "pinned": true
             }
-          },
-          {
-            "id": "91eff93999d2a065",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Go.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "441de3753b969908",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Go.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "6428074185422a35",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Változók.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "0a83cc4c627b20ef",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Egyszerű típusok.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "d07c74be24509841",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Változók.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "9561106781517a87",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Változók.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "b881ccadffc4ed8a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Változók.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "ed4be1aba34573d3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Típus konverzió.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "24fc6f6531b10eff",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Típus konverzió.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "9c4490f48a04fa33",
-            "type": "leaf",
-            "state": {
-              "type": "empty",
-              "state": {}
-            }
-          },
-          {
-            "id": "bd53b0a5696b6f23",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Típus konverzió.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "04af3875fbe3176a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Típus konverzió.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "72a1ccdd818546a0",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Változók.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "f98b463e2c5022e2",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Változók.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "a18df8417bfd2408",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Változók.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "d5b6b005999d2ef8",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Változók.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 16
+        ]
       }
     ],
     "direction": "vertical"
@@ -272,7 +83,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Változók.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -289,7 +99,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Változók.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -311,9 +120,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Változók.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -333,7 +140,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "d5b6b005999d2ef8",
+  "active": "8652934009a48fbe",
   "lastOpenFiles": [
     "Változók.md",
     "Type Inference.md",

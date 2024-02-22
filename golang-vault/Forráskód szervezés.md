@@ -20,3 +20,23 @@ func main() { // program belépési pont
 	fmt.Println("My favorite number is", rand.Intn(10))
 }
 ```
+
+Alternatív importálás (a fenti "factored" formátum ajánlott):
+```go
+import "fmt"
+import "math"
+```
+
+A beimportált package-ek exportált elemeit tudjuk felhasználni. Az exportált elemek nevei nagy betűvel kezdődnek:
+```go
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+func main() {
+	fmt.Println(math.Pi)
+}
+```

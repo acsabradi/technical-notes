@@ -1,0 +1,1 @@
+[[Konzolra kiírás]]

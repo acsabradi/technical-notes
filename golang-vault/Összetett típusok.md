@@ -1,2 +1,3 @@
 [[struct]]
 [[array]]
+[[slice]]

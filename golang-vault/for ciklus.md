@@ -25,3 +25,26 @@ Végtelen ciklus:
 for {
 }
 ```
+
+Slice-on iterálás `range`-el:
+```go
+package main
+
+import "fmt"
+
+var pow = []int{1, 2, 4, 8, 16, 32, 64, 128}
+
+func main() {
+	for i, v := range pow {
+		fmt.Printf("2**%d = %d\n", i, v)
+	}
+}
+```
+A `range` két értéket ad minden ciklusban: az indexet és az indexnél lévő érték másolatát.
+
+A visszaadott értékek tetszőlegesen elhagyhatók:
+```go
+for i, _ := range pow
+for _, value := range pow
+for i := range pow
+```

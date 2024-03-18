@@ -52,3 +52,5 @@ func main() {
 }
 ```
 Úgy vesszük, mintha a függvény elején lennének definiálva a visszetérési változók. A "naked" return tér vissza az értékekkel.
+
+[[Függvények mint változók]]

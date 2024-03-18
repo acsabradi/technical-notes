@@ -1,3 +1,4 @@
 [[struct]]
 [[array]]
 [[slice]]
+[[map]]

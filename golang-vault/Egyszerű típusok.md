@@ -17,3 +17,8 @@ complex64 complex128
 ```
 
 Habár lehetséges különböző bit-nagyságú integerek explicit használata, legtöbbször az `int` használata ajánlott.
+
+Integer érték inkrementálása:
+```go
+intValue += 1
+```

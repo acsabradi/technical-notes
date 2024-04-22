@@ -1,6 +1,6 @@
 Go-ban nincsenek osztályok, de definiálhatunk struct-hoz rendelt metódusokat.
 
-A metódusoknak van egy *receiver argument*-jük a `func` kulcsszó és a metódus név között. Ez adja meg, mely struct-hoz csatoljuk a metódust.
+A metódusoknak van egy *receiver argument*-jük a `func` kulcsszó és a metódus név között. Ez adja meg, mely struct-hoz csatoljuk a metódust:
 
 ```go
 package main
@@ -23,6 +23,8 @@ func main() {
 	fmt.Println(v.Abs()) // 5
 }
 ```
+
+Az `Abs()` metódus érték szerint veszi át a struct-ot, így annak egy másolatán fog dolgozni. Ez azt jelenti, hogy az eredeti struct-ot nem tudja módosítani.
 
 A metódusok átalakíthatók sima függvényekké:
 
@@ -49,3 +51,4 @@ func main() {
 ```
 
 [[Típus metódusok]]
+[[Pointer típusú metódusok]]

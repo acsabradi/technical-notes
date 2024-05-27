@@ -2,3 +2,4 @@
 [[array]]
 [[slice]]
 [[map]]
+[[interface]]

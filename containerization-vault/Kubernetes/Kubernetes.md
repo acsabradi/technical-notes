@@ -1,0 +1,1 @@
+[Telepítés](Kubernetes/Telepítés.md)

@@ -57,4 +57,16 @@ Pod-ok és Service-ek lekérdezése adott namespace-en belül:
 kubectl get pod,svc -n <namespace név>
 ```
 A cluster indításakor létrejönnek [alapértelmezett namespace-ek](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/#initial-namespaces), amikkel rászűrhetünk a K8s által létrehozott erőforrásokra.
+# Leállítás
+K8s erőforrások törlése:
+```
+kubectl delete service <Deployment ID>
+kubectl delete deployment <Deployment ID>
+```
+
+Cluster leállítás és törlés:
+```
+minikube stop
+minikube delete
+```
 # [Egyéb szolgáltatások bekapcsolása](https://kubernetes.io/docs/tutorials/hello-minikube/#enable-addons)

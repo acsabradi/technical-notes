@@ -1,6 +1,4 @@
 # Deployment létrehozása
-A **Pod** egy vagy több konténer logikai csoportja. A konténerek osztozkodnak a tárhely és hálózati erőforrásokon. A **Deployment** az alatta lévő Pod-okat ellenőrzi, csekkolja a státuszukat, újraindítja a leállt konténereket.
-
 Egy Service létrehozása, benne egy Pod egy konténerrel:
 ```
 kubectl create deployment <Deployment név> --image=<Docker image ID> -- <parancs a futó konténernek>
@@ -14,6 +12,11 @@ kubectl get deployments
 Pod-ok lekérdezése:
 ```
 kubectl get pods
+```
+
+Részletek a pod-okról (image, IP cím, portok, event-ek):
+```
+kubectl describe pods
 ```
 
 Event-ek lekérdezése:
@@ -30,7 +33,7 @@ Konténer log lekérdezése:
 ```
 kubectl logs <Pod ID>
 ```
-
+Ezzel a paranccsal minden kimenetet láthatunk, amit az applikáció a standard output-ra küld. Pl. egy `node.js` alkalmazásnál a `console.log` kimeneteit kérhetjük le így.
 # Service létrehozása
 Alapesetben egy Pod csak a cluster-en belül, annak belső IP címen keresztül elérhető, azon keresztül kommunikálnak az egy clusterben lévő pod-ok. A Service lesz a felelős a külső elérhetőségért.
 
@@ -50,7 +53,8 @@ Applikáció indítása:
 ```
 minikube service <Deployment ID>
 ```
-# Cluster kommunikáció Service nélkül
+# Kommunikáció a cluster-ral Service nélkül
+## Kubernetes API-val
 A `kubectl proxy` paranccsal létrehozunk egy proxy-t, ami továbbítja a kommunikációt a cluster privát hálózatának. Egy másik terminálból indítsuk el a proxy-t, sikeres indítás esetén visszakapjuk az IP címet ahol a proxy hallgatózik. Ezen az IP címen elérhetjük a Kubernetes API-t.
 
 K8s verzió lekérdezése:
@@ -84,6 +88,25 @@ Végül a proxy-n keresztül hozzáférünk a pod-hoz:
 ```powershell
 Invoke-WebRequest http://localhost:8001/api/v1/namespaces/default/pods/$($podName):8080/proxy/
 ```
+## Parancsvégrehajtással
+Környezeti változó lekérdezése:
+```
+kubectl exec <pod ID> -- env
+```
+
+Bash indítása:
+```
+kubectl exec -ti <pod ID> -- bash
+```
+
+A konténer nevét is meg kell adni, ha a pod-ban egynél több konténer fut. -> [dokumentáció](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_exec/#options)
+
+Futó szerver esetén a bash-ben is ellenőrizhetjük az applikáció működését:
+```
+curl http://localhost:8080
+```
+
+A `cat <entrypoint, pl. server.js>` paranccsal belenézhetünk az implementációba, ott látható, hogy melyik porton hallgatózik a szerver.
 # Egyéb lekérdezés
 Pod-ok és Service-ek lekérdezése adott namespace-en belül:
 ```

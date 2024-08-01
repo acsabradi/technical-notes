@@ -1,0 +1,60 @@
+<!-- sablon vezérlet űrlap: minden a sablonban van, az űrlapot majd submit-nál adjuk át ellenőrzésre -->
+<!-- utána ngModel + name elemmel kötöm a mezőket -->
+<!-- a validatárokat is itt helyezzük fel -->
+<h2>Model vezérelt (reaktív) űrlap</h2>
+<form novalidate [formGroup]="employeeForm" (ngSubmit)="submit()">
+
+  @if(!employeeForm.controls.ename.valid &&
+      (employeeForm.controls.ename.dirty || employeeForm.controls.ename.touched)){
+    <p class="error">A név mező validációja helytelen!</p>
+
+    <!-- attó függően, hogy required vagy minlenght hiba támadt más hibaüznetet szeretnék visszaadni -->
+    @if(employeeForm.controls.ename.errors?.['required']){
+      <p class="error">A név kitöltése kötelező</p>
+    }
+    @if(employeeForm.controls.ename.errors?.['minlength']){
+      <p class="error">A név karakterszáma nem elgendő!</p>
+    }
+  }
+
+  Név*: <input name="name" formControlName="ename" /><br/>
+
+  <fieldset name="identifiers" formGroupName="ids">
+  <legend>Azonosítók</legend>
+    @if(!c('ids').controls.ssn.valid &&
+       (c('ids').controls.ssn.dirty || c('ids').controls.ssn.touched)){
+        <p class="error">Hiba a taj számmal!</p>
+
+        @if(c('ids').controls.ssn.errors?.['required']){
+          <p class="error">A TAJ kitöltése kötelező!</p>
+        }
+        @if(c('ids').controls.ssn.errors?.['digits']){
+          <p class="error">A TAJ csak számjegyeket tartalmazhat!</p>
+        }
+        @if(c('ids').controls.ssn.errors?.['exactlength']){
+          <p class="error">A TAJ hossza nem megfelelő (aktuális hossz: {{c('ids').controls.ssn.errors?.['exactlength'].actlength}}, elvárt hossz: {{c('ids').controls.ssn.errors?.['exactlength'].length}})!</p>
+        }
+        @if(c('ids').controls.ssn.errors?.['ssnvalidator']){
+          <p class="error"> {{c('ids').controls.ssn.errors?.['ssnvalidator'].msg}} !</p>
+        }
+    }
+    Taj*: <input name="ssn" formControlName="ssn"/><br/>
+  </fieldset>
+
+  Születési idő*: <input type="date" name="birthDate" formControlName="birthDate"/><br/>
+
+  Nem:
+  <ng-container *ngFor="let sex of sexes">
+    <input name="sex" type="radio" [value]="sex.id" formControlName="sex">{{sex.name}}
+  </ng-container><br/>
+
+  Családi állapot:
+  <select name="status" formControlName="mStatus">
+    <ng-container *ngFor="let status of statuses">
+      <option [value]="status.id">{{status.name}}</option>
+    </ng-container><br/>
+  </select><br/>
+
+
+  <button type="submit" [disabled]="!employeeForm.valid">Beküldés</button>
+</form>

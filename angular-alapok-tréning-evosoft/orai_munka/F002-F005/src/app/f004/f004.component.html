@@ -1,0 +1,97 @@
+<h4>Elágazások</h4>
+
+<!--egyágú elágazás -->
+<!-- *ngIf="logikia kifj": akkor jelenik meg, ha a kijf. igaz-->
+<p *ngIf="phoneBook.phoneNumbers.length !== 0">
+  Van tartalom a telefonkönyvben!
+</p>
+<p *ngIf="phoneBook.phoneNumbers.length === 0">
+  A telefonkönyv üres!
+</p>
+<!-- kétágú elágazás: *ngIf és az else ágban elugrom egy
+template változóval megjeleölt helyre (template változókat #-kal definiálunk)
+, amely egy ng-template lehet -->
+<p *ngIf="phoneBook.phoneNumbers.length !== 0; else length0">
+  Van tartalom a telefonkönyvben!
+</p>
+<ng-template #length0> <!-- a kontektus azonosítom a length0 változóval-->
+  <p>
+    A telefonkönyv üres!
+  </p>
+</ng-template>
+
+<!-- új szintaxis @if, @else if, @else használata-->
+@if(phoneBook.phoneNumbers.length === 0){
+  <p>A telefonkönyv üres</p>
+}
+@else{
+  <p> Van tartalom a telefonkönyvben!</p>
+}
+<h4>Ciklus</h4>
+<!-- *ngFor: egy for-of ciklus megvalósítás-->
+<!-- spec változókon keresztül lekérdezhető az állapot (implicit változók értékének olvasása)
+ index: sorszám, stb.  -->
+<p *ngFor="let item of phoneBook.phoneNumbers; let i = index">
+  <!-- tartalom behelyettesítés esetén dupla kapcsos zárójelpár
+   (string interpoláció) ... értékelje ki a kifejezés tartalmát
+   az angular, majd konvertálja szöveggé és helyettesítse be-->
+  {{item.name}}
+</p>
+
+<!-- új szintaxis: @for-->
+@for(item of phoneBook.phoneNumbers; track item.name){
+  <p>{{item.name}}</p>
+}
+@empty{ <!-- akkor fut le, ha üres a lista-->
+  <p>Sajnos nincs egyetlen elem sem!</p>
+}
+
+<h4>Feladat megoldása</h4>
+<!--
+  a) ha nincs tartalom, akkor Üres a lista! hibaüzenet piros betűszínnel
+  b) ha van tartalom, akkor táblázat a név, nem, taj, szülidő, email és telszám oszlopkkal ,
+     és minden sorban jelenítsük meg a személy nevét és tajszámát és az email
+-->
+@if(phoneBook.phoneNumbers.length === 0){
+  <p class="error">Üres lista!</p>
+}
+@else{
+  <table>
+    <thead>
+      <tr>
+        <th>Név</th>
+        <th>Nem</th>
+        <th>Taj</th>
+        <th>Szülidő</th>
+        <th>Email</th>
+        <th>Telefonszám(ok)</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(item of phoneBook.phoneNumbers; track item.ssn){
+        <tr>
+          <td>{{item.name}}</td>
+          <td>{{item.sex | sex: 'hu'}}</td>
+          <td>{{item.ssn}}</td>
+          <td>{{item.birthDate | date: 'YYYY.MM.dd'}}</td>
+          <td>{{item.mail}}</td>
+          <td>
+            <!-- ng-container: olyan gyűjtőelem, ami angularban az elemek gyűtjésére használható, de
+            a rendelés során nem kerül hozzárendelésre html tartalom -->
+            <ng-container *ngIf="item.phoneNumbers.length === 0;else phoneExits">
+                -
+            </ng-container>
+            <ng-template #phoneExits>
+              <!-- készítsünk standalon join nevű pipeot, amely
+              segítségével átadva egy töbmöt annak elemeit egy
+              stringgé tudjuk fűzni, úgy hogy az elemek közé
+              a kötelező paraméterként átadandó separator karaktert
+              írja (utolsó elem után nincs separator )-->
+              {{item.phoneNumbers | join: ';'}}
+            </ng-template>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}

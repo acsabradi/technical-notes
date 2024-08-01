@@ -1,0 +1,25 @@
+@if(records.length === 0){
+  <p class="error">Nincs alkalmazott!</p>
+}
+@else{
+  <table>
+    <thead>
+      <tr>
+        <th>Név</th>
+        <th>Nem</th>
+        <th>Taj</th>
+        <th>Szülidő</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(item of records; track item.ssn){
+        <tr>
+          <td>{{item.name}}</td>
+          <td>{{item.sex | sex: 'hu'}}</td>
+          <td>{{item.ssn | ssn}}</td>
+          <td>{{item.birthDate | date: 'YYYY.MM.dd'}}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}

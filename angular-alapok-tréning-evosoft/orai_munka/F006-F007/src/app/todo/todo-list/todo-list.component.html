@@ -1,0 +1,25 @@
+@if(records.length !== 0){
+  <table>
+    <thead>
+      <tr>
+        <th>Leírás</th>
+        <th>Prioritás</th>
+        <th>Műveletek</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(item of records; track item.id){
+        <tr>
+          <td>{{item.description}}</td>
+          <td>{{item.prio}}</td>
+          <td>
+            <app-delete-todo [item]="item" (itemDeleted)="delete($event)"/>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}
+@else{
+  <p>Nincs rögzítve teendő</p>
+}

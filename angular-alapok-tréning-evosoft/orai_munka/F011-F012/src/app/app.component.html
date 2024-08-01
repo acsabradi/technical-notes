@@ -1,0 +1,19 @@
+<!-- az oldal első két bejegyzése nem függ az útvonaltól-->
+<h1>Masterfield / Angular tanfolyam</h1>
+<h2>F011-F012 feladat megoldása</h2>
+<!-- a menüsor is statikus független az útvonaltól -->
+<a [routerLink]="['categories']">Kategóriák </a>
+<a [routerLink]="['products']">Terméklista </a>
+<a [routerLink]="['products/add']">Termék hozzáadása</a>
+<!-- a dinamikus nézetbetöltés a router-outlet helyén történik meg-->
+<router-outlet></router-outlet>
+
+<!--
+  product modul, ezt csatoljuk fel /products link alá, ezen belül
+    / -> listázzuk a termékeket (ProductList)
+    /add -> termék hozzádása (NeWProduct)
+    /edit -> termék módosítás (EditProduct)
+    /delete -> termék törlés (DeleteProduct)
+
+
+-->

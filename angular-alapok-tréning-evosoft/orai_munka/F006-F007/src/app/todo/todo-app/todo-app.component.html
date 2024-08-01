@@ -1,0 +1,4 @@
+<h2>Új elem elhelyezése</h2>
+<app-add-todo (itemCreated)="addItem($event)"/>
+<h2>Teendők listája</h2>
+<app-todo-list [list]="todos" (itemDeleted)="delete($event)"></app-todo-list>

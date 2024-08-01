@@ -1,0 +1,10 @@
+<form>
+  <input name="description" placeholder="leírás" #inp_desc/><br/>
+  Prioritás:
+  <select name="prio" #inp_prio>
+    <option value="0">LOW</option>
+    <option value="1">MEDIUM</option>
+    <option value="2">HIGH</option>
+  </select><br/>
+  <button type="button" (click)="buttonClick(inp_desc.value, inp_prio.value)">Létrehozás</button>
+</form>

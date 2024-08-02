@@ -1,0 +1,23 @@
+
+<!-- # jelekkel létrehozok nézetváltozókat, így a gombra kattintásnál közvetlenül olvasok
+  értéket, az osztáylból nehéz kezelni a nézteten megjelenő adatokat -->
+<input type="text" placeholder="Tennivaló leírása" #name/>
+<select #prio>
+  <option value="low">Alacsony</option>
+  <option value="medium">Közepes</option>
+  <option value="high">Magas</option>
+</select>
+<button type="button" (click)="save1(name, prio)">Rögzít</button>
+<br>
+
+
+<!-- ue. csak adatkötéssel, ehhez importálni kell a FormsModule és utána az ngmodel-en keresztül
+az osztáylban felvett repezentáns mezőkkel tudunk dolgozni kétirányú adatkötéssel (bármelyik oldalról
+változik az adat az osztály és a nézet szinkronban lesz) -> jobb megoldás, mert automa a kötés -->
+<input type="text" placeholder="Tennivaló leírása" [(ngModel)]="todoItem.name"/>
+<select [(ngModel)]="todoItem.priority">
+  <option value="0">Alacsony</option>
+  <option value="1">Közepes</option>
+  <option value="2">Magas</option>
+</select>
+<button type="button" (click)="save2()">Rögzít</button>

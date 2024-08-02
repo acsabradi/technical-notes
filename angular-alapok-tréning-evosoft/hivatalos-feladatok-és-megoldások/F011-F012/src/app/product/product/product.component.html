@@ -1,0 +1,9 @@
+<div class="product">
+  <h3>{{item.title}}</h3>
+  <p>Termék ára: {{item.salesPrice}}</p>
+  <div>
+    <button (click)="delete()">Termék törlése</button>
+  </div>
+  <img *ngFor="let link of item.productImages" [src]="link"
+       [ngStyle]="{height: '100px'}"/>
+</div>

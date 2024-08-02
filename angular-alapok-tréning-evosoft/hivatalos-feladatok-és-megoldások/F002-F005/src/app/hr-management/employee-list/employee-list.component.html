@@ -1,0 +1,58 @@
+<h2>Dolgozó lista</h2>
+
+<!-- ngIf: egyágú elágazás, de nézetváltozóval megvalósítható az if-else is, ha a feltetéel nem teljesül akkor
+elugrunk a megfelelő ng-template elemre, amit elnevezetünk a nézetben a # segítségével -->
+<p *ngIf="employees.length === 0;else list">Nincs sajnos egyetlen dolgozó sem!</p>
+<ng-template #list>
+  <table>
+    <thead>
+      <tr>
+        <th>Név</th>
+        <th>Szülidő</th>
+        <th>Nem</th>
+        <th>Email</th>
+        <th>Taj</th>
+        <th>Adóazon</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- ngFor: bejárom a sablon megfelelő elemét -->
+      <tr *ngFor="let emp of employees">
+        <td>{{emp.name}}</td>
+        <!-- a nézeten pipe-al formázzuk az adatokat-->
+        <td>{{emp.birthDate | date: 'YYYY.MM.dd'}}</td>
+        <!-- saját pipeot készítek a nem kiírásához-->
+        <td>{{emp.sex | sex}}</td>
+
+        <td>
+          <!-- ng container: összefogó elem, de rendeléskor nem lesz tényleges kimenet belőle -->
+          <ng-container *ngIf="emp.ValidEmail.status; else invalidEmail">
+              {{emp.Email}}
+          </ng-container>
+          <ng-template #invalidEmail>
+              {{emp.ValidEmail.msg}}
+          </ng-template>
+        </td>
+
+        <td>
+          <ng-container *ngIf="emp.ValidSsn.status; else invalidSsn">
+            {{emp.Ssn}}
+          </ng-container>
+          <ng-template #invalidSsn>
+              {{emp.ValidSsn.msg}}
+          </ng-template>
+        </td>
+        <td>
+          <ng-container *ngIf="emp.ValidTin.status; else invalidTin">
+            {{emp.Tin}}
+          </ng-container>
+          <ng-template #invalidTin>
+              {{emp.ValidTin.msg}}
+          </ng-template>
+        </td>
+
+
+      </tr>
+    </tbody>
+  </table>
+</ng-template>

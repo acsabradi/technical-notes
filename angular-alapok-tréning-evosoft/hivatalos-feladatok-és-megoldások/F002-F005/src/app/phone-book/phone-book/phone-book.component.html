@@ -1,0 +1,33 @@
+<!-- ha nincs bejegyzés, akkor hibaüzenet, különben elugrunk a listázó nézetre-->
+<p *ngIf="phoneBook.itemCnt == 0; else lista">Nincs egyetlen bejegyzés sem!</p>
+
+<!-- megjelenítjük a listát ->probléma, hogy csak azt érjük el, ami IPerson felületben van
+definiálva és a standard típuskényszerítés itt nem jó, helyette $any-vel tudom letiltani a
+típusellenőrzést -->
+<ng-template #lista>
+  <table>
+    <thead>
+      <tr>
+        <th>Név</th>
+        <th>Nem</th>
+        <th>Életkor</th>
+        <th>Taj</th>
+        <th>Adószám</th>
+        <th>Email cím</th>
+        <th>Telfonszám(ok)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of phoneBook.search()">
+        <td>{{item.name}}</td>
+        <td>{{item.sex | sex}}</td>
+        <td>{{item.birthDate | date: 'YYYY.MM.dd'}}</td>
+        <!-- $any: letiltom a típusellenőrzést (bármit meghívhatok az obj-on keresztül)-->
+        <td>{{$any(item).ssn}}</td>
+        <td>{{$any(item).tin}}</td>
+        <td>{{$any(item).email}}</td>
+        <td>{{$any(item).phoneNumbers}}</td>
+      </tr>
+    </tbody>
+  </table>
+</ng-template>

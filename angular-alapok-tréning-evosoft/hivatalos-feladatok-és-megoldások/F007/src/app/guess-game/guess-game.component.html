@@ -1,0 +1,20 @@
+<h1>Számkitaláló játék</h1>
+<p>
+  Gondoltam egy számra, kattintás segítségével találd ki, hogy melyik számra gondolok!
+</p>
+<p>
+  Kattintások száma a jétékfolyamban: {{clickCount}}
+</p>
+<!-- konténerbe rakom az elemeket, emiatt tudom a csoport megjelenítését szabályolzni, de ebből nem lesz html elem a renderelés során-->
+<ng-container *ngIf="!lastGuess || lastGuess !== generatedNumber; else win">
+  <p *ngIf="lastGuess">Az utolsó tipped értéke {{lastGuess}}</p>
+  <p *ngIf="lastGuess && lastGuess < generatedNumber">A tipped kisebb, mint a gondolt szám.</p>
+  <p *ngIf="lastGuess && lastGuess > generatedNumber">A tipped nagyobb, mint a gondolt szám.</p>
+  <button *ngFor="let number of buttonNumbers" (click)="guess(number)">{{number}}</button>
+</ng-container>
+<!-- ng-template: így valósítható meg az if-else szerkezet a nézetek készítése során (az ngIf-ből egy templatere ugrok az else ágban)-->
+<ng-template  #win>
+  <p>Gratulánk, nyertél!</p>
+  <button (click)="reset()">Újra szeretném kezdeni a játékot!</button>
+</ng-template >
+

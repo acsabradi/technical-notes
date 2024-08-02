@@ -1,0 +1,8 @@
+<div id="error" *ngIf="isNaN(number)">Ez nem szám!</div>
+<div id="error" *ngIf="number && !isNaN(number) && number < 0">Ez negatív szám!</div>
+
+
+<form id="calc_form" #calcForm="ngForm" (click)="calc(calcForm)">
+  <input id="input_field" name="number" ngModel/>
+  <button id="calc_button">Számít</button>
+</form>

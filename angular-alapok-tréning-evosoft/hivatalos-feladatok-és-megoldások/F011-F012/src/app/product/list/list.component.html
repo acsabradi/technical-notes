@@ -1,0 +1,11 @@
+<h2>Terméklista</h2>
+
+<p *ngIf="isLoading; else noLoading">Adatok letöltése folyamatban, kérjük várjon ...</p>
+<ng-template #noLoading>
+  <p *ngIf="!isError && data.length === 0">Sajnos nincs rögzítve adat!</p>
+  <p *ngIf="isError">Hiba a végrehatjás során! Hiba: {{error}}</p>
+</ng-template>
+
+<ng-container *ngFor="let p of data">
+  <app-product [product]="p"></app-product>
+</ng-container>

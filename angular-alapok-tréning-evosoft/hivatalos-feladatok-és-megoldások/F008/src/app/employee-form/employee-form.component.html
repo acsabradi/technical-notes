@@ -1,0 +1,49 @@
+<!-- reaktív űrlap: az űrlapot kötjük a modelhez-->
+<!-- utána formControlName elemmel kötöm a mezőket -->
+<form [formGroup]="employeeForm">
+  <!-- a név egyszerű, mert csak kötelezőséget várok el ha nem valid és hozzányúltak (dirty -> írtak bele, touched -> kapott fókuszt, de elhgyták a mezőt), akkor jelzem a hibát -->
+  <div *ngIf="!control('name')?.valid && (control('name')?.dirty || control('name')?.touched)">
+    A név megadása kötelező!
+  </div>
+
+  Név*:
+  <input name="name" formControlName="name"/><br/>
+
+  <!-- a beágyzott group leképezéshez a formGroupName-t hasznáhatjuk-->
+  <fieldset name="identifiers" formGroupName="identifiers">
+    <legend>Azonosítók</legend>
+
+    <div *ngIf="!control('identifiers.ssn')?.valid && (control('identifiers.ssn')?.dirty || control('identifiers.ssn')?.touched)">
+      <!-- itt tovább bontom, mivel kötelezőség van / saját validátor -->
+      <div *ngIf="control('identifiers.ssn')?.errors?.['required']">A mező kitöltése kötelező</div>
+      <div *ngIf="control('identifiers.ssn')?.errors?.['ssn']">{{control('identifiers.ssn')?.errors?.['msg']}}</div>
+    </div>
+    Taj*:
+    <input name="ssn" formControlName="ssn"/><br/>
+
+    <div *ngIf="!control('identifiers.tin')?.valid && (control('identifiers.tin')?.dirty || control('identifiers.tin')?.touched)">
+      <!-- itt tovább bontom, mivel kötelezőség van / saját validátor -->
+      <div *ngIf="control('identifiers.tin')?.errors?.['required']">A mező kitöltése kötelező</div>
+      <div *ngIf="control('identifiers.tin')?.errors?.['tin']">{{control('identifiers.tin')?.errors?.['msg']}}</div>
+    </div>
+    Adószám*:
+    <input name="tin" formControlName="tin"/><br/>
+  </fieldset>
+  Születési idő*:
+  <input type="date" name="birthDate" formControlName="birthDate"/><br/>
+
+  Nem:
+  <ng-container *ngFor="let sex of sexes">
+    <input name="sex" formControlName="sex" type="radio" [value]="sex.id">{{sex.name}}
+  </ng-container><br/>
+
+  Családi állapot:
+  <select name="status" formControlName="status">
+    <ng-container *ngFor="let status of statuses">
+      <option [value]="status.id">{{status.name}}</option>
+    </ng-container><br/>
+  </select><br/>
+
+
+  <button [disabled]="!employeeForm.valid" (click)="submit()">Beküldés</button>
+</form>

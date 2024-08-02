@@ -1,0 +1,8 @@
+<!-- a felvitelt csak 20 elemig mutatjuk -->
+<app-add-todo *ngIf="todos.length < 20" (newItemAdded)="newItem($event)"></app-add-todo>
+<app-list-todo [items]="todos" (itemDeleted)="itemDeleted($event)"></app-list-todo>
+
+
+<p>Magas prioritás: {{stat.high}}</p>
+<p>Közepes prioritás: {{stat.medium}}</p>
+<p>Alacsony prioritás: {{stat.low}}</p>

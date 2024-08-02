@@ -1,0 +1,23 @@
+<p *ngIf="items.length == 0;else lista">Nincs egyelőre teendő</p>
+<ng-template #lista>
+  <table >
+    <thead>
+      <tr>
+        <th>Név</th>
+        <th>Prioritás</th>
+        <th>Műveletek</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- ngClass-al állítom be a stílust a prioritás alapján -->
+      <tr *ngFor="let item of items" [ngClass]="'p' + item.priority.toString()">
+        <td>{{item.name}}</td>
+        <!-- csinálok egy pipe-ot, amely a felsorolás típust szöveges formára hozza -->
+        <td>{{item.priority | prio}}</td>
+        <td>
+          <app-delete-todo (itemDeleted)="itemDeleted($event)" [todoItem]="item"></app-delete-todo>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-template>

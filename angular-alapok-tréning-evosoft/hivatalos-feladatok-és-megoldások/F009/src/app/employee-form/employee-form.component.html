@@ -1,0 +1,37 @@
+<!-- sablon vezérlet űrlap: minden a sablonban van, az űrlapot majd submit-nál adjuk át ellenőrzésre -->
+<!-- utána ngModel + name elemmel kötöm a mezőket -->
+<!-- a validatárokat is itt helyezzük fel -->
+<form #empForm="ngForm" (ngSubmit)="submit(empForm)">
+
+  Név*:
+  <input name="name" required ngModel/><br/>
+
+  <!-- a beágyzott group leképezéshez a ngModelGroup-t hasznáhatjuk-->
+  <fieldset name="identifiers" ngModelGroup="identifiers">
+    <legend>Azonosítók</legend>
+
+    Taj*:
+    <input name="ssn" required ngModel/><br/>
+
+
+    Adószám*:
+    <input name="tin" required ngModel/><br/>
+  </fieldset>
+  Születési idő*:
+  <input type="date" required name="birthDate" ngModel/><br/>
+
+  Nem:
+  <ng-container *ngFor="let sex of sexes">
+    <input name="sex" required type="radio" [value]="sex.id" ngModel>{{sex.name}}
+  </ng-container><br/>
+
+  Családi állapot:
+  <select name="status" ngModel>
+    <ng-container *ngFor="let status of statuses">
+      <option required [value]="status.id">{{status.name}}</option>
+    </ng-container><br/>
+  </select><br/>
+
+
+  <button type="submit" [disabled]="!empForm.valid">Beküldés</button>
+</form>

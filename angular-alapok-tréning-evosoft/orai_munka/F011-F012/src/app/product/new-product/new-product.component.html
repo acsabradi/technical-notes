@@ -1,1 +1,13 @@
-<p>new-product works!</p>
+<h4>Termékek rögzítése</h4>
+<form novalidate [formGroup]="prodForm" (ngSubmit)="submit()">
+  <input placeholder="title" formControlName="title"/><br/>
+  <input placeholder="brand" formControlName="brand"/><br/>
+  <input placeholder="sku" formControlName="sku"/><br/>
+  <input placeholder="price" formControlName="price"/><br/>
+  <select formControlName="category">
+    <ng-container *ngFor="let pc of categories$ | async">
+      <option [value]="pc.slug">{{pc.name}}</option>
+    </ng-container>
+  </select><br/>
+  <button type="submit" [disabled]="!prodForm.valid">Mentés</button>
+</form>

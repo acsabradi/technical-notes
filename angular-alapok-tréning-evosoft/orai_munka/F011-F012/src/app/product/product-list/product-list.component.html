@@ -1,1 +1,29 @@
-<p>product-list works!</p>
+@if(products.length == 0){
+  <p>Sajnos nincsenek adatok!</p>
+}
+@else{
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Price</th>
+        <th>SKU</th>
+        <th>Brand</th>
+        <th>Műveletek</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(p of products;track p.id){
+        <tr>
+          <td>{{p.title}}</td>
+          <td>{{p.price}}</td>
+          <td>{{p.sku}}</td>
+          <td>{{p.brand}}</td>
+          <td>
+            <app-delete-product [item]="p"></app-delete-product>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}

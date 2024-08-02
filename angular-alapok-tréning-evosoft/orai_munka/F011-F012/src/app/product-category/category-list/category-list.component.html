@@ -1,1 +1,37 @@
-<p>category-list works!</p>
+<h3>Kategória lista</h3>
+
+<h4>Szinkron adatok</h4>
+<table>
+  <thead>
+    <tr>
+      <th>Kategória neve</th>
+      <th>Műveletek</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let d of data1">
+      <td>{{d.name}}</td>
+      <td>
+        <a [routerLink]="['/products/byCategory', d.slug]">Mutasd a kategória termékeit</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>Aszinkron adatok</h4>
+<table>
+  <thead>
+    <tr>
+      <th>Kategória neve</th>
+      <th>Műveletek</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let d of data2$ | async">
+      <td>{{d.name}}</td>
+      <td>
+        <a>Mutasd a kategória termékeit</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

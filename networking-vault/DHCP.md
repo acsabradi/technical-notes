@@ -9,6 +9,8 @@ A DHPC szerver automatikus ad a gépnek:
 - default gateway-t
 - DNS szervert
 
+Általában egy dedikált szerver vagy a router a DHCP szerver.
+
 **Scope**: A DHCP szerver ezeket az IP címeket tudja kiosztani.
 **Lease**: Egy kiosztott IP cím ennyi ideig maradhat egy gépnél. Így a szerver nem fog kifogyni kiosztható IP címekből. A gépek új lease-t kérhetnek, amikor az aktuális lejár.
-**Reservation**: A MAC címével azonosított gép mindig ugyanazt az IP címet kapja a DHCP-től.
+**Reservation**: A [[MAC cím|MAC címével]] azonosított gép mindig ugyanazt az IP címet kapja a DHCP-től.

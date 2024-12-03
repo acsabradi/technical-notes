@@ -38,3 +38,7 @@ Linux: `ifconfig`
 
 ![[two-connected-network]]
 Egy switch alá tartozó gépek látják egymást, mert egyezik a hálózati azonosítójuk. Viszont a kettő switch hiába van összekötve, az egyik csoport nem látja a másikat, mert nem egyezik a hálózati azonosítójuk.
+
+Egy gép IP címet kaphat:
+- manuálisan (statikus IP)
+- [[DHCP|DHCP-től]] (dinamikus IP)
